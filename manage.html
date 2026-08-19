@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>edit task</title>
+
+<link rel="stylesheet" href="manage.css">
+
+</head>
+
+<body>
+    <!--这个页面用来管理用户上传的分类和任务-->
+
+
+    <div class="container">
+        <div class="manage-header">
+            <h1>エディットページ</h1>
+            <div class="help-wrapper">
+
+                <button class="help-button">
+                    ?
+                </button>
+
+                <div class="help-tooltip">
+
+                    <h3>使い方</h3>
+
+                    <p>① まず「やりたいことを追加」からカテゴリを登録します。「運動」「家事」など、やりたいことを大まかに入力してください。</p>
+
+                    <p>② 次に、そのカテゴリでやりたい具体的なタスクを入力します。1行につき1つずつ、「机を片付ける」「○○体育館で1時間泳ぐ」のように入力してください</p>
+                        
+                    <p>③ 入力が終わったら、「追加」をクリックしてください。</p>
+                        
+                    <p>④ やりたいことを登録したら、「戻る」をクリックして抽選ページへ。👏を押して2秒待つと、カテゴリがランダムに表示されます。</p>
+
+                    <p>⑤ 最後に出てきたタスクをやりたいなら、スマホを離れて、さっそくやってみましょう！</p>
+
+                    <p>スマホをなんとなく見てしまう時間を少しずつ減らして、ずっとやりたかったこと」を実際にやる時間に変えていけますように。Action Compassを楽しんでください 😊</p>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="manage-actions">
+            <button id="edit-button">
+            ✏️ エディット
+            </button>
+        </div>
+
+        <a href="homepage.html" class="page-link">
+        ← 戻る
+        </a>
+
+        <section id="add-task" class="add-card">
+
+            <h3>やりたいことを追加</h3>
+
+            <div class="category-row">
+
+                <select id="category-select">
+                    <option value="">
+                        既存のカテゴリから選択
+                    </option>
+                </select>
+
+                <input
+                    id="new-category-input"
+                    placeholder="新しいカテゴリを入力">
+
+            </div>
+            
+            <textarea
+                id="task-input"
+                placeholder="一行につき一つ入力してください"
+                rows="5"
+            ></textarea>
+            
+            <div class="add-button-row">
+
+                <button id="save-task">
+                    追加
+                </button>
+
+            </div>
+            
+        </section>
+
+        <div id="task-list"></div>
+        
+        <div id="edit-actions">
+            <label>
+                <input type="checkbox" id="select-all">
+                すべてを削減
+            </label>
+
+            <button id="save-edit">
+                保存
+            </button>
+
+            <button id="delete-selected">
+                削減
+            </button>
+
+            <button id="cancel-edit">
+                キャンセル
+            </button>
+        </div>
+
+    </div>
+
+<script src="data.js"></script>
+<script src="manage.js"></script>
+
+</body>
+
+</html>

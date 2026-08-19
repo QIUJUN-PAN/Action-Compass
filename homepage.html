@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>action compass</title>
+
+    <link rel="stylesheet" href="homepage.css">
+</head>
+
+<body>
+<!--这个页面是主页面，用来决定分类和任务-->
+    <div class="container">
+       <main class="draw-page">
+
+        <section class="draw-god">
+
+            <h1>
+                次に何をするか、<br>
+                神様に決めてもらおう
+            </h1>
+
+            <a href="manage.html" class="manage-link">
+                やりたいことをエディット →
+            </a>
+
+
+            <img 
+                src="image-elements/internet_god.png"
+                class="god-image"
+                alt="インタネットの神様"
+            >
+
+            <button id="draw-button">
+                👏
+            </button>
+            
+            <p class="draw-hint">
+                神様に聞いてみる
+            </p>
+
+            
+
+        </section>
+
+         <!-- 抽到的分类由 JS 放进这里 -->
+        <section id="category-result">
+            <!-- JS 动态生成 -->
+        </section>
+
+        <!-- 抽到的具体任务由 JS 放进这里 -->
+        <section id="task-result">
+            <!-- JS 动态生成 -->
+        </section>
+
+        </main>
+
+    </div>
+    
+    <script src="data.js"></script>
+    <script src="homepage.js"></script>
+
+</body>
+
+</html>

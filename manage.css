@@ -1,0 +1,415 @@
+/* 整个页面 */
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background: #f7f7f5;
+
+    font-family:
+        "Yu Gothic",
+        "Hiragino Kaku Gothic ProN",
+        sans-serif;
+
+    color: #222;
+}
+
+.add-card,
+.category,
+.empty-state {
+    background: #fffdf8;
+    border: 1px solid #e9e3d8;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+
+.add-card {
+    padding: 10px 15px;
+    margin-bottom: 20px;
+
+    box-sizing: border-box;
+    margin: 0 0 40px;
+}
+
+.empty-state {
+    min-height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px;
+    box-sizing: border-box;
+
+    font-size: small;
+}
+
+.empty-state p {
+    margin: 0 0 18px;
+
+    color: #666;
+}
+
+/* 页面主体 */
+.container {
+    width: min(860px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 48px 0 80px;
+}
+
+/* tooltip设置 */
+.manage-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.help-wrapper {
+    position: relative;
+
+    display: inline-block;
+}
+
+.help-tooltip h3 {
+    font-size: 20px;
+}
+
+.help-tooltip p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 0 0 20px;
+}
+
+/* 问号按钮 */
+.help-button {
+    width: 32px;
+    height: 32px;
+
+    padding: 0;
+
+    border: 1px solid #ccc;
+    border-radius: 50%;
+
+    background: white;
+
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* 教程默认隐藏 */
+.help-tooltip {
+    display: none;
+
+    position: absolute;
+
+    top: 42px;
+    left: 0;
+
+    width: 600px;
+    max-width: calc(100vw - 80px);
+    padding: 18px 20px;
+
+    max-height: 70vh;
+    overflow-y: auto;
+
+    background: white;
+
+    border: 1px solid #ddd;
+    border-radius: 12px;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+    box-sizing: border-box;
+
+    z-index: 100;
+}
+
+/* 鼠标放到问号区域时显示 */
+.help-wrapper:hover .help-tooltip {
+    display: block;
+}
+
+/* 页面标题 */
+.manage-header h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* 返回首页链接 */
+.page-link {
+    display: inline-block;
+    margin-bottom: 28px;
+    color: #6b4eff;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.page-link:hover {
+    text-decoration: underline;
+}
+
+/* 普通模式下的编辑按钮区域 */
+.manage-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+/* 所有按钮的基础样式 */
+button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        background 0.2s;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.1);
+}
+
+/* 编辑按钮 */
+#edit-button {
+    background: #222;
+    color: white;
+}
+
+/* 编辑操作栏 */
+#edit-actions {
+    display: none;
+    position: sticky;
+    bottom: 20px;
+    z-index: 10;
+
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    margin-top: 28px;
+    padding: 14px 16px;
+
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* 当 JS 把 display 改成 block 时，内部按钮仍能排列得比较自然 */
+#edit-actions[style*="display: block"] {
+    display: flex !important;
+}
+
+/* 保存按钮 */
+#save-edit {
+    background: #222;
+    color: white;
+}
+
+/* 删除按钮 */
+#delete-selected {
+    background: #fff0f0;
+    color: #c62828;
+}
+
+/* 取消按钮 */
+#cancel-edit {
+    background: #eceef2;
+    color: #333;
+}
+
+/* 全选区域 */
+#edit-actions label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+/* 普通模式的分类标题 */
+.category {
+    margin-bottom: 28px;
+
+    padding: 32px 36px;
+
+    background: #fffdf8;
+
+    border: 1px solid #e9e3d8;
+    border-radius: 20px;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+
+    box-sizing: border-box;
+}
+
+.category h2 {
+    margin: 0 0 12px;
+
+    padding-bottom: 8px;
+
+    font-size: 24px;
+}
+
+/* 普通模式的任务 */
+.category p {
+    margin: 0;
+    padding: 12px 0;
+    border-top: 1px solid #f0f1f3;
+    font-size: 18px;
+    line-height: 1.6;
+    
+}
+
+.category p:last-child {
+    border-bottom: none;
+}
+
+/* 编辑模式：分类行 */
+.edit-category-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+/* 编辑模式：任务行 */
+.edit-task-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* 文本输入框 */
+.edit-category,
+.edit-task {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 11px 13px;
+    border: 1px solid #d8dbe0;
+    border-radius: 10px;
+
+    background: #fafafa;
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+}
+
+/* 分类输入框更醒目 */
+.edit-category {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* 输入框聚焦状态 */
+.edit-category:focus,
+.edit-task:focus {
+    background: white;
+    border-color: #6b4eff;
+    box-shadow: 0 0 0 3px rgba(107, 78, 255, 0.12);
+}
+
+/* 复选框 */
+.select-category,
+.select-task,
+#select-all {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.empty-state p {
+    margin-top: 0;
+}
+
+/* 小屏幕 */
+@media (max-width: 600px) {
+    .container {
+        width: min(100% - 24px, 860px);
+        padding-top: 28px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    .category {
+        padding: 18px 16px;
+    }
+
+    #edit-actions {
+        bottom: 10px;
+    }
+}
+
+/* 新增功能 */
+.category-row {
+    display: flex;
+    gap: 12px;
+
+    margin-top: 30px;
+}
+
+.add-button-row {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 14px;
+}
+
+#category-select,
+#new-category-input {
+    flex: 1;
+}
+
+#category-select,
+#new-category-input,
+#task-input {
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d8dbe0;
+    border-radius: 10px;
+
+    background: #fafafa;
+
+    font-family: inherit;
+    font-size: 16px;
+}
+
+#task-input {
+    display: block;
+
+    width: 100%;
+    min-height: 140px;
+
+    margin-top: 14px;
+
+    box-sizing: border-box;
+}
+
+#save-task {
+    padding: 12px 24px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #222;
+    color: white;
+
+    font-family: inherit;
+    font-size: 16px;
+
+    cursor: pointer;
+}
